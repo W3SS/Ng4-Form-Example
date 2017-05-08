@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    <h2>Login</h2>
+    <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['userName'].valid && complexForm.controls['userName'].touched}">
+            <label>Username:</label>
+            <input class="form-control" type="text" placeholder="John" [formControl]="complexForm.controls['userName']">
+            <!-- The hasError method will tell us if a particular error exists -->
+            <div *ngIf="complexForm.controls['userName'].hasError('required') && complexForm.controls['userName'].touched" class="alert alert-danger">You must include a username.</div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
+            <label>Password:</label>
+            <input class="form-control" type="text" placeholder="Doe" [formControl]="complexForm.controls['password']">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button routerLink="" routerLinkActive="active" class="btn btn-danger">Back</button>
+        </div>
+    </form>
+</div>
